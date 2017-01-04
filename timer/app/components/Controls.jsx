@@ -7,7 +7,7 @@ var Controls = React.createClass ({
 	},
 	onStatusChange: function (newStatus) {
 		return () => {
-			this.props.onStatusChange(newStatus);
+			this.props.onStatusChange (newStatus);
 		}
 	},
 	render: function () {
@@ -25,7 +25,7 @@ var Controls = React.createClass ({
 				{renderStartStopButton ()}
 				<button className="button alert hollow" onClick={this.onStatusChange('stopped')}>Clear</button>
 			</div>
-		);
+		)
 	}
 });
 

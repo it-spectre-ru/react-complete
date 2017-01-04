@@ -20,7 +20,7 @@ var Navigation = () => {
 			<div className="top-bar-right">
 				<ul className="menu">
 					<li className="menu-text">
-						Created by <a href="http://github.com/tsvetkovpro" target="_blank">TsvetkovPro</a>
+						Created by <a href="http://www.mead.io" target="_blank">Stas Tsvetkov</a>
 					</li>
 				</ul>
 			</div>
@@ -29,4 +29,3 @@ var Navigation = () => {
 };
 
 module.exports = Navigation;
-
