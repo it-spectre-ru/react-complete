@@ -1,9 +1,8 @@
 var $ = require ('jquery');
 
-
 module.exports = {
 	setTodos: function (todos) {
-		if ($.inArray (todos)) {
+		if ($.isArray (todos)) {
 			localStorage.setItem ('todos', JSON.stringify (todos));
 			return todos;
 		}
@@ -18,6 +17,6 @@ module.exports = {
 
 		}
 
-		return $.isArray(todos) ? todos : [];
+		return $.isArray (todos) ? todos : [];
 	}
 };
