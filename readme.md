@@ -14,7 +14,8 @@
 #### Посмотреть демо
 * [Weather-app](http://weather-app-56.herokuapp.com/)
 
-
+-------------------------------------------------------
+-------------------------------------------------------
 
 ### A timer application
 
@@ -30,7 +31,7 @@
 
 
 #### Посмотреть демо
-* [Weather-app](http://weather-app-56.herokuapp.com/)
+* [Timer-app](http://weather-app-56.herokuapp.com/)
 
 
  
