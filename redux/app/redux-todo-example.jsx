@@ -18,15 +18,31 @@ var reducer = (state = stateDefault, action) => {
 			return state;
 	}
 };
+var store = redux.createStore(reducer, redux.compose(
+	window.devToolsExtension ? window.devToolsExtension() : f => f
+));
 
-var store = redux.createStore(reducer);
+// subscribe to changes
+store.subscribe(() => {
+	var state = store.getState();
+
+	document.getElementById('app').innerHTML = state.searchText;
+});
 
 console.log('state: ', store.getState());
-
 
 store.dispatch({
 	type: 'CHANGE_SEARCH_TEXT',
 	searchText: 'job'
 });
 
-console.log('searchText will be \'job\'', store.getState());
+store.dispatch({
+	type: 'CHANGE_SEARCH_TEXT',
+	searchText: 'job222'
+});
+
+store.dispatch({
+	type: 'CHANGE_SEARCH_TEXT',
+	searchText: 'job3333'
+});
+
