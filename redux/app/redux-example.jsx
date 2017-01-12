@@ -10,7 +10,7 @@ var stateDefault = {
 
 var nextHobbyId = 1;
 var nextNoobyId = 1;
-var reducer = (state = stateDefault, action) => {
+var oldReducer = (state = stateDefault, action) => {
 	// state = state || {name: 'Anonymous'};
 
 	switch (action.type) {
@@ -58,8 +58,59 @@ var reducer = (state = stateDefault, action) => {
 	}
 };
 
+var nameReducer = (state = 'Anonymous', action) => {
+	switch (action.type) {
+		case 'CHANGE_NAME':
+			return action.name;
+		default:
+			return state;
+	}
+};
+
+var hobbiesReducer = (state = [], action) => {
+	switch (action.type) {
+		case 'ADD_HOBBY':
+			return [
+				...state,
+				{
+					id: nextHobbyId++,
+					hobby: action.hobby
+				}
+			];
+		case 'REMOVE_HOBY':
+			return state.filter((nobby) => nobby.id !== action.id)
+		default:
+			return state;
+	}
+};
+
+var noobiesReducer = (state = [], action) => {
+	switch (action.type) {
+		case 'ADD_NOOBIES':
+			return [
+				...state,
+				{
+					id: nextNoobyId++,
+					noobby: action.noobby,
+					kind: action.kind,
+					title: action.title
+				}
+			];
+		case 'REMOVE_NOOBIES':
+			return state.filter((nobby) => nobby.kind !== action.kind)
+		default:
+			return state;
+	}
+};
+
+var reducer = redux.combineReducers({
+	name: nameReducer,
+	hobbies: hobbiesReducer,
+	noobies: noobiesReducer
+});
+
 var store = redux.createStore(reducer, redux.compose(
-	window.devToolsExtension ? window.devToolsExtension()  : f => f
+	window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
 // subscribe to changes
