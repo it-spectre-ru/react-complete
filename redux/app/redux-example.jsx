@@ -30,6 +30,11 @@ var reducer = (state = stateDefault, action) => {
 					}
 				]
 			};
+		case 'REMOVE_HOBY':
+			return {
+				...state,
+				hobbies: state.hobbies.filter((hobby) => hobby.id !== action.id)
+			};
 		case 'ADD_NOOBIES':
 			return {
 				...state,
@@ -42,6 +47,11 @@ var reducer = (state = stateDefault, action) => {
 						title: action.title
 					}
 				]
+			};
+		case 'REMOVE_NOOBIES':
+			return {
+				...state,
+				noobies: state.noobies.filter((nobby) => nobby.kind !== action.kind)
 			};
 		default:
 			return state;
@@ -78,6 +88,16 @@ store.dispatch({
 });
 
 store.dispatch({
+	type: 'ADD_HOBBY',
+	hobby: 'Walking'
+});
+
+store.dispatch({
+	type: 'REMOVE_HOBY',
+	id: 2
+});
+
+store.dispatch({
 	type: 'ADD_NOOBIES',
 	noobby: 'noobs_)',
 	kind: 'off',
@@ -89,6 +109,11 @@ store.dispatch({
 	noobby: 'noobs_)2222222',
 	kind: 'off2222222222222',
 	title: 'Title noobies2222222222222222222'
+});
+
+store.dispatch({
+	type: 'REMOVE_NOOBIES',
+	kind: 'off'
 });
 
 store.dispatch({
