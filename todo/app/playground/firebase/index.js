@@ -22,17 +22,28 @@ firebaseRef.set({
 	}
 });
 
-//firebaseRef.child('app/name').remove();
-
-// firebaseRef.child('app').update({
-// 	version: '2.4',
-// 	name: null
+// firebaseRef.child('app').once('value').then((snapshot) => {
+// 	console.log('Got entire database:', snapshot.key, snapshot.val());
+// }, (e) => {
+// 	console.log('unable to fetch value', e);
 // });
 
-firebaseRef.update({
-	isRunning: null
+
+// var logData =  (snapshot) => {
+// 	console.log('got value', snapshot.val());
+// };
+//
+// firebaseRef.on('value', logData);
+//
+// firebaseRef.off(logData);
+//
+// firebaseRef.update({isRunning: false});
+
+
+firebaseRef.child('user').on('value', (snapshot) => {
+	console.log('user ref changed', snapshot.val());
 });
 
-firebaseRef.child('user/age').remove();
+firebaseRef.child('user').update({name: 'bruce'});
 
-
+firebaseRef.child('app').update({name: 'todosAPP'});
