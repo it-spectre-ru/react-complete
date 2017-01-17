@@ -22,17 +22,17 @@ firebaseRef.set({
 	}
 });
 
-// firebaseRef.update({
-// 	'app/name': 'todo app56',
-// 	'user/name': 'jab'
+//firebaseRef.child('app/name').remove();
+
+// firebaseRef.child('app').update({
+// 	version: '2.4',
+// 	name: null
 // });
 
-firebaseRef.child('app').update({
-	name: 'todod111 app'
+firebaseRef.update({
+	isRunning: null
 });
 
-firebaseRef.child('user').update({
-	name: 'keb'
-});
+firebaseRef.child('user/age').remove();
 
 
