@@ -22,28 +22,36 @@ firebaseRef.set({
 	}
 });
 
-// firebaseRef.child('app').once('value').then((snapshot) => {
-// 	console.log('Got entire database:', snapshot.key, snapshot.val());
-// }, (e) => {
-// 	console.log('unable to fetch value', e);
+// var notesRef = firebaseRef.child('notes');
+//
+// notesRef.on('child_added', (snapshot) => {
+// 	console.log('child_added: ', snapshot.key, snapshot.val());
 // });
-
-
-// var logData =  (snapshot) => {
-// 	console.log('got value', snapshot.val());
-// };
 //
-// firebaseRef.on('value', logData);
+// notesRef.on('child_changed', (snapshot) => {
+// 	console.log('child_changed: ', snapshot.key, snapshot.val());
+// });
 //
-// firebaseRef.off(logData);
+// notesRef.on('child_removed', (snapshot) => {
+// 	console.log('child_removed: ', snapshot.key, snapshot.val());
+// });
 //
-// firebaseRef.update({isRunning: false});
+// var newNoteRef = notesRef.push({
+// 	text: 'walk ...!'
+// });
+//
+// console.log('todo id: ', newNoteRef.key);
 
+var todosRef = firebaseRef.child('todos');
 
-firebaseRef.child('user').on('value', (snapshot) => {
-	console.log('user ref changed', snapshot.val());
+todosRef.on('child_added', (snapshot) => {
+	console.log('new child_added: ', snapshot.key, snapshot.val());
 });
 
-firebaseRef.child('user').update({name: 'bruce'});
+todosRef.push({
+	text: 'todo 1'
+});
 
-firebaseRef.child('app').update({name: 'todosAPP'});
+todosRef.push({
+	text: 'todo 2'
+});
