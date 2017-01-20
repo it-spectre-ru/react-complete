@@ -49,6 +49,26 @@ export var addTodos = (todos) => {
 	};
 };
 
+export var startAddTodos = () => {
+	return (dispatch, getState) => {
+		var todosRef = firebaseRef.child('todos');
+
+		todosRef.once('value').then((snapshot) => {
+			var todos = snapshot.val() || {};
+			var parcedTodos = [];
+
+			Object.keys(todos).forEach((todoId) => {
+				parcedTodos.push({
+					id: todoId,
+					...todos[todoId]
+				});
+			});
+
+			dispatch(addTodos(parcedTodos));
+		});
+	};
+};
+
 export var updateTodo = (id, updates) => {
 	return {
 		type: 'UPDATE_TODO',
