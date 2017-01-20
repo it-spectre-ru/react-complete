@@ -11,7 +11,7 @@ describe('Actions', () => {
 	it('should generate search text action', () => {
 		var action = {
 			type: 'SET_SEARCH_TEXT',
-			searchText: 'some text'
+			searchText: 'Some search text'
 		};
 		var res = actions.setSearchText(action.searchText);
 
@@ -32,7 +32,7 @@ describe('Actions', () => {
 			type: 'ADD_TODO',
 			todo: {
 				id: '123abc',
-				text: 'some-text',
+				text: 'Anything we like',
 				completed: false,
 				createdAt: 0
 			}
@@ -44,7 +44,7 @@ describe('Actions', () => {
 
 	it('should create todo and dispatch ADD_TODO', (done) => {
 		const store = createMockStore({});
-		const todoText = 'my todo item';
+		const todoText = 'My todo item';
 
 		store.dispatch(actions.startAddTodo(todoText)).then(() => {
 			const actions = store.getActions();
@@ -60,11 +60,11 @@ describe('Actions', () => {
 
 	it('should generate add todos action object', () => {
 		var todos = [{
-			id: '2222',
-			text: 'some-text',
+			id: '111',
+			text: 'anything',
 			completed: false,
 			completedAt: undefined,
-			createdAt: 44000
+			createdAt: 33000
 		}];
 		var action = {
 			type: 'ADD_TODOS',
@@ -86,17 +86,23 @@ describe('Actions', () => {
 		expect(res).toEqual(action);
 	});
 
-	describe('tests with firebas todos', () => {
+	describe('Tests with firebase todos', () => {
 		var testTodoRef;
 
 		beforeEach((done) => {
-			testTodoRef = firebaseRef.child('todos').push();
+			var todosRef = firebaseRef.child('todos');
 
-			testTodoRef.set({
-				text: 'some-todo',
-				completed: false,
-				createdAt: 12321313
-			}).then(() => done());
+			todosRef.remove().then(() => {
+				testTodoRef = firebaseRef.child('todos').push();
+
+				return testTodoRef.set({
+					text: 'Something to do',
+					completed: false,
+					createdAt: 23453453
+				})
+			})
+				.then(() => done())
+				.catch(done);
 		});
 
 		afterEach((done) => {
@@ -121,6 +127,21 @@ describe('Actions', () => {
 
 				done();
 			}, done);
+		});
+
+		it('should populate todos and dispatch ADD_TODOS', (done) => {
+			const store = createMockStore({});
+			const action = actions.startAddTodos();
+
+			store.dispatch(action).then(() => {
+				const mockActions = store.getActions();
+
+				expect(mockActions[0].type).toEqual('ADD_TODOS');
+				expect(mockActions[0].todos.length).toEqual(1);
+				expect(mockActions[0].todos[0].text).toEqual('Something to do');
+
+				done();
+			}, done)
 		});
 	});
 });

@@ -1,4 +1,5 @@
 import moment from 'moment';
+
 import firebase, {firebaseRef} from 'app/firebase/';
 
 export var setSearchText = (searchText) => {
@@ -21,7 +22,6 @@ export var addTodo = (todo) => {
 	};
 };
 
-// creating todo and adding to firebase
 export var startAddTodo = (text) => {
 	return (dispatch, getState) => {
 		var todo = {
@@ -32,7 +32,6 @@ export var startAddTodo = (text) => {
 		};
 		var todoRef = firebaseRef.child('todos').push(todo);
 
-		// call dispatch which updates the store and that rerender the component adding new todo to the browser
 		return todoRef.then(() => {
 			dispatch(addTodo({
 				...todo,
@@ -53,18 +52,18 @@ export var startAddTodos = () => {
 	return (dispatch, getState) => {
 		var todosRef = firebaseRef.child('todos');
 
-		todosRef.once('value').then((snapshot) => {
+		return todosRef.once('value').then((snapshot) => {
 			var todos = snapshot.val() || {};
-			var parcedTodos = [];
+			var parsedTodos = [];
 
 			Object.keys(todos).forEach((todoId) => {
-				parcedTodos.push({
+				parsedTodos.push({
 					id: todoId,
 					...todos[todoId]
 				});
 			});
 
-			dispatch(addTodos(parcedTodos));
+			dispatch(addTodos(parsedTodos));
 		});
 	};
 };
