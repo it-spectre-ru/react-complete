@@ -79,3 +79,16 @@ module.exports = {
 	},
 	devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map'
 };
+
+
+/*
+$ heroku config:set MESSAGING_SENDER_ID=153069442690
+
+$ heroku config
+=== todo-app-56 Config Vars
+API_KEY:             AIzaSyBkzv0qcf4_r9MOx8oJ-7u_cWB-9TKlxzQ
+AUTH_DOMAIN:         todo-app-56-c13eb.firebaseapp.com
+DATABASE_URL:        https://todo-app-56-c13eb.firebaseio.com
+MESSAGING_SENDER_ID: 153069442690
+STORAGE_BUCKET:      todo-app-56-c13eb.appspot.com
+*/
