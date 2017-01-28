@@ -18,6 +18,7 @@ firebase.auth().onAuthStateChanged((user) => {
 		hashHistory.push('/');
 	}
 });
+
 // Load foundation
 $(document).foundation();
 

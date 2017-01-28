@@ -1,7 +1,6 @@
 var uuid = require('node-uuid');
 var moment = require('moment');
 
-
 export var searchTextReducer = (state = '', action) => {
 	switch (action.type) {
 		case 'SET_SEARCH_TEXT':
@@ -9,6 +8,7 @@ export var searchTextReducer = (state = '', action) => {
 		default:
 			return state;
 	}
+	;
 };
 
 export var showCompletedReducer = (state = false, action) => {
@@ -43,6 +43,8 @@ export var todosReducer = (state = [], action) => {
 				...state,
 				...action.todos
 			];
+		case 'LOGOUT':
+			return [];
 		default:
 			return state;
 	}

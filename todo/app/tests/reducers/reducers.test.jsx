@@ -1,5 +1,6 @@
 var expect = require('expect');
 var df = require('deep-freeze-strict');
+
 var reducers = require('reducers');
 
 describe('Reducers', () => {
@@ -7,7 +8,7 @@ describe('Reducers', () => {
 		it('should set searchText', () => {
 			var action = {
 				type: 'SET_SEARCH_TEXT',
-				searchText: 'search'
+				searchText: 'dog'
 			};
 			var res = reducers.searchTextReducer(df(''), df(action));
 
@@ -31,10 +32,10 @@ describe('Reducers', () => {
 			var action = {
 				type: 'ADD_TODO',
 				todo: {
-					id: '123',
-					text: 'some-text',
+					id: 'abc123',
+					text: 'Something to do',
 					completed: false,
-					createdAt: 12345665
+					createdAt: 92384275
 				}
 			};
 			var res = reducers.todosReducer(df([]), df(action));
@@ -45,11 +46,11 @@ describe('Reducers', () => {
 
 		it('should update todo', () => {
 			var todos = [{
-				id: '98',
-				text: 'some text',
+				id: '123',
+				text: 'Something',
 				completed: true,
-				createdAt: 345,
-				completedAt: 349
+				createdAt: 123,
+				completedAt: 125
 			}];
 			var updates = {
 				completed: false,
@@ -69,11 +70,11 @@ describe('Reducers', () => {
 
 		it('should add existing todos', () => {
 			var todos = [{
-				id: '2222',
-				text: 'some-text',
+				id: '111',
+				text: 'anything',
 				completed: false,
 				completedAt: undefined,
-				createdAt: 44000
+				createdAt: 33000
 			}];
 			var action = {
 				type: 'ADD_TODOS',
@@ -84,13 +85,29 @@ describe('Reducers', () => {
 			expect(res.length).toEqual(1);
 			expect(res[0]).toEqual(todos[0]);
 		});
+
+		it('should wipe todos on logout', () => {
+			var todos = [{
+				id: '111',
+				text: 'anything',
+				completed: false,
+				completedAt: undefined,
+				createdAt: 33000
+			}];
+			var action = {
+				type: 'LOGOUT'
+			};
+			var res = reducers.todosReducer(df(todos), df(action));
+
+			expect(res.length).toEqual(0);
+		});
 	});
 
 	describe('authReducer', () => {
 		it('should store uid on LOGIN', () => {
 			const action = {
 				type: 'LOGIN',
-				uid: '123abc'
+				uid: 'abc123'
 			};
 			const res = reducers.authReducer(undefined, df(action));
 

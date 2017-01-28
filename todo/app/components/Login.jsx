@@ -19,9 +19,9 @@ export var Login = React.createClass({
 						<div className="callout callout-auth">
 							<h3>Login</h3>
 							<p>
-								Login with github accaout below.
+								Login with GitHub account below.
 							</p>
-							<button className="button" onClick={this.onLogin}>Login with github</button>
+							<button className="button" onClick={this.onLogin}>Login With GitHub</button>
 						</div>
 					</div>
 				</div>

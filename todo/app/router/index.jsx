@@ -16,6 +16,7 @@ var redirectIfLoggedIn = (nextState, replace, next) => {
 	if (firebase.auth().currentUser) {
 		replace('/todos');
 	}
+
 	next();
 };
 
