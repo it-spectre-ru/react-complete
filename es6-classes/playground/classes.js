@@ -34,7 +34,7 @@ var me = new Person('andrew', 22);
 console.log(me.getGreeting());
 
 var anonymous = new Child('mike', 4, 'cars');
-console.log(anonymous.getGreeting());
+console.log(anonymous. ());
 
 var baby = new Baby();
 console.log(baby.getGreeting());
