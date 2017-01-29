@@ -52,7 +52,7 @@
 
 
 #### Посмотреть демо
-* [Timer-app](http://weather-app-56.herokuapp.com/)
+* [Todo-app](http://todo-app-56.herokuapp.com/)
 
 
  
