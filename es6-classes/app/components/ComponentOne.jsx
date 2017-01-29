@@ -14,11 +14,17 @@ var ComponentOne = React.createClass({
 	propTypes: {
 		count: React.PropTypes.number
 	},
+	onClick: function() {
+		this.setState({
+			count: this.state.count + 1
+		});
+	},
 	render: function() {
 		return (
 			<div>
 				<h3>component one using React.createClass</h3>
 				<p>Current count: {this.state.count}</p>
+				<button className="button" onClick={this.onClick}>Button one</button>
 			</div>
 		);
 	}
