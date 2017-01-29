@@ -4,7 +4,7 @@ class ComponentTwo extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			count : 1000
+			count: props.count
 		};
 	}
 	render () {
@@ -16,5 +16,13 @@ class ComponentTwo extends React.Component {
 		);
 	}
 }
+
+ComponentTwo.defaultProps = {
+	count: 789
+};
+
+ComponentTwo.propTypes = {
+	count: React.PropTypes.number
+};
 
 export default ComponentTwo;
