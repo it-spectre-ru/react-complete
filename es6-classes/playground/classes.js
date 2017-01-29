@@ -14,8 +14,27 @@ class Person {
 	}
 }
 
-var me = new Person('andrew', 22);
-console.log(me.getDescription());
+class Child extends Person {
+	constructor (name, age, like) {
+		super(name, age);
+		this.like = like;
+	}
+	getGreeting () {
+		return `!!!! ${this.name} and i like ${this.like}`;
+	}
+}
 
-var anonymous = new Person();
-console.log(anonymous.getDescription());
+class Baby extends Person {
+	getGreeting () {
+		return `whaaaaaaaaaa`;
+	}
+}
+
+var me = new Person('andrew', 22);
+console.log(me.getGreeting());
+
+var anonymous = new Child('mike', 4, 'cars');
+console.log(anonymous.getGreeting());
+
+var baby = new Baby();
+console.log(baby.getGreeting());
