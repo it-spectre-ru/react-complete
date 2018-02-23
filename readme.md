@@ -55,9 +55,9 @@
 * [Todo-app](http://todo-app-56.herokuapp.com/)
 
 
- 
-#### Предложения
-https://bitbucket.org/stasok/react-complete/pull-requests/ - Ваши пожелания и замечания к проекту.
+
+#### Получить помощь
+* [Ваши пожелания и замечания к проекту](https://github.com/it-spectre-ru/react-complete/pulls)
 
 
 #### Смотрите также
