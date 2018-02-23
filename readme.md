@@ -58,3 +58,7 @@
  
 #### Предложения
 https://bitbucket.org/stasok/react-complete/pull-requests/ - Ваши пожелания и замечания к проекту.
+
+
+#### Смотрите также
+* [Лицензия](./license.md)
